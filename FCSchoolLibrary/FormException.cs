@@ -22,7 +22,7 @@ namespace FCSchoolLibrary
 
         private async void btn_sendReport_Click(object sender, EventArgs e)
         {
-            BLL bll = new BLL();
+            Bll bll = new Bll();
 
             string username = Properties.Settings.Default.MailUsername;
             string password = Properties.Settings.Default.MailPassword;

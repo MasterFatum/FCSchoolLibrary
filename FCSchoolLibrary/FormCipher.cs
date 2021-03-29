@@ -24,7 +24,7 @@ namespace FCSchoolLibrary
         {
             try
             {
-                lb_cipher.DataSource = new BLL().GetBookCipher();
+                lb_cipher.DataSource = new Bll().GetBookCipher();
             }
             catch (Exception ex)
             {
@@ -58,7 +58,7 @@ namespace FCSchoolLibrary
                 txbx_newCipherName.Text = String.Empty;
                 MessageBox.Show(@"Шифр успешно отредактирован!");
 
-                lb_cipher.DataSource = new BLL().GetBookCipher();
+                lb_cipher.DataSource = new Bll().GetBookCipher();
             }
             catch (Exception ex)
             {

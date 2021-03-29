@@ -24,7 +24,7 @@ namespace FCSchoolLibrary
         {
             try
             {
-                lb_department.DataSource = new BLL().GetBookDepartment();
+                lb_department.DataSource = new Bll().GetBookDepartment();
             }
             catch (Exception ex)
             {
@@ -58,7 +58,7 @@ namespace FCSchoolLibrary
                 txbx_newDepartmentName.Text = String.Empty;
                 MessageBox.Show(@"Отдел успешно отредактирован!");
 
-                lb_department.DataSource = new BLL().GetBookDepartment();
+                lb_department.DataSource = new Bll().GetBookDepartment();
             }
             catch (Exception ex)
             {

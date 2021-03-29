@@ -19,7 +19,7 @@ namespace FCSchoolLibrary
         {
             try
             {
-                lb_publishName.DataSource = new BLL().GetBookPublishName();
+                lb_publishName.DataSource = new Bll().GetBookPublishName();
             }
             catch (Exception ex)
             {
@@ -58,7 +58,7 @@ namespace FCSchoolLibrary
                 txbx_newPublishName.Text = String.Empty;
                 MessageBox.Show(@"Издательство успешно отредактировано!");
 
-                lb_publishName.DataSource = new BLL().GetBookPublishName();
+                lb_publishName.DataSource = new Bll().GetBookPublishName();
             }
             catch (Exception ex)
             {

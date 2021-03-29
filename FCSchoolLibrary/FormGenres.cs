@@ -24,7 +24,7 @@ namespace FCSchoolLibrary
         {
             try
             {
-                lb_genres.DataSource = new BLL().GetBookGenre();
+                lb_genres.DataSource = new Bll().GetBookGenre();
             }
             catch (Exception ex)
             {
@@ -58,7 +58,7 @@ namespace FCSchoolLibrary
                 txbx_newGenresName.Text = String.Empty;
                 MessageBox.Show(@"Жанр успешно отредактирован!");
 
-                lb_genres.DataSource = new BLL().GetBookGenre();
+                lb_genres.DataSource = new Bll().GetBookGenre();
             }
             catch (Exception ex)
             {

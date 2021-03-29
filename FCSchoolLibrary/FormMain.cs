@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,9 +10,9 @@ namespace FCSchoolLibrary
     {
         FCSchoolLibrary fcSchoolLibrary = new FCSchoolLibrary();
 
-        BLL bll = new BLL();
+        Bll bll = new Bll();
 
-        private Timer time;
+        private readonly Timer time;
 
         public void Time(Object sender, EventArgs e)
         {
@@ -46,10 +44,6 @@ namespace FCSchoolLibrary
         {
             time.Start();
             new FormAutorization().ShowDialog();
-            //GetStartApp();
-            //bll.RenameDataGridView(dgv_books);
-            
-
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -61,7 +55,6 @@ namespace FCSchoolLibrary
 
         }
 
-        
         public void GetStartApp()
         {
             
@@ -91,24 +84,7 @@ namespace FCSchoolLibrary
             } 
         }
 
-        public void UpdateDataGridView()
-        {
-            try
-            {
-                fcSchoolLibrary.Dispose();
-
-                fcSchoolLibrary = new FCSchoolLibrary();
-
-                dgv_books.DataSource = fcSchoolLibrary.Books.ToList();
-
-                statusCountBooksInDb.Text = dgv_books.RowCount.ToString();
-
-            }
-            catch (Exception ex)
-            {
-                new FormException(ex.Message).ShowDialog();
-            }
-        }
+        
 
 
         public void ResetAllComboBox()
@@ -186,7 +162,7 @@ namespace FCSchoolLibrary
 
         private void btn_updateDb_Click(object sender, EventArgs e)
         {
-            UpdateDataGridView();
+            bll.UpdateDataGridView(dgv_books, statusCountBooksInDb);
             bll.RenameDataGridView(dgv_books);
         }
 
@@ -270,16 +246,16 @@ namespace FCSchoolLibrary
         //ПОИСК И ФИЛЬТРАЦИЯ КНИГ
         
 
-        IQueryable<Book> bookes;
+        IQueryable<Book> books;
 
         private void cbx_author_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-            bookes = fcSchoolLibrary.Books.Where(b => b.Author == cbx_author.SelectedItem.ToString()).Distinct();
+            books = fcSchoolLibrary.Books.Where(b => b.Author == cbx_author.SelectedItem.ToString()).Distinct();
 
             if (cbx_name.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Author == cbx_author.SelectedItem.ToString())
                         .Where(b => b.Name == cbx_name.SelectedItem.ToString())
                         .Distinct();
@@ -287,7 +263,7 @@ namespace FCSchoolLibrary
 
             if (cbx_year.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Author == cbx_author.SelectedItem.ToString())
                         .Where(b => b.Year.ToString() == cbx_year.SelectedItem.ToString())
                         .Distinct();
@@ -295,7 +271,7 @@ namespace FCSchoolLibrary
 
             if (cbx_inventoryNumber.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Author == cbx_author.SelectedItem.ToString())
                         .Where(b => b.Count.ToString() == cbx_inventoryNumber.SelectedItem.ToString())
                         .Distinct();
@@ -303,7 +279,7 @@ namespace FCSchoolLibrary
 
             if (cbx_subject.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Author == cbx_author.SelectedItem.ToString())
                         .Where(b => b.Subject == cbx_subject.SelectedItem.ToString())
                         .Distinct();
@@ -311,24 +287,24 @@ namespace FCSchoolLibrary
 
             if (cbx_genre.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Author == cbx_author.SelectedItem.ToString())
                        .Where(b => b.Genre == cbx_genre.SelectedItem.ToString())
                         .Distinct();
             }
 
 
-            dgv_books.DataSource = bookes.ToList();
+            dgv_books.DataSource = books.ToList();
         }
 
         private void cbx_name_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            bookes = fcSchoolLibrary.Books.Where(b => b.Name == cbx_name.SelectedItem.ToString()).Distinct();
+            books = fcSchoolLibrary.Books.Where(b => b.Name == cbx_name.SelectedItem.ToString()).Distinct();
 
             if (cbx_author.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Name == cbx_name.SelectedItem.ToString())
                         .Where(b => b.Author == cbx_author.SelectedItem.ToString())
                         .Distinct();
@@ -336,7 +312,7 @@ namespace FCSchoolLibrary
 
             if (cbx_year.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Name == cbx_name.SelectedItem.ToString())
                         .Where(b => b.Year.ToString() == cbx_year.SelectedItem.ToString())
                         .Distinct();
@@ -344,7 +320,7 @@ namespace FCSchoolLibrary
 
             if (cbx_inventoryNumber.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Name == cbx_name.SelectedItem.ToString())
                         .Where(b => b.Count.ToString() == cbx_inventoryNumber.SelectedItem.ToString())
                         .Distinct();
@@ -352,7 +328,7 @@ namespace FCSchoolLibrary
 
             if (cbx_subject.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Name == cbx_name.SelectedItem.ToString())
                         .Where(b => b.Subject == cbx_subject.SelectedItem.ToString())
                         .Distinct();
@@ -360,25 +336,25 @@ namespace FCSchoolLibrary
 
             if (cbx_genre.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Name == cbx_name.SelectedItem.ToString())
                        .Where(b => b.Genre == cbx_genre.SelectedItem.ToString())
                         .Distinct();
             }
 
 
-            dgv_books.DataSource = bookes.ToList();
+            dgv_books.DataSource = books.ToList();
 
 
         }
 
         private void cbx_year_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bookes = fcSchoolLibrary.Books.Where(b => b.Year.ToString() == cbx_year.SelectedItem.ToString()).Distinct();
+            books = fcSchoolLibrary.Books.Where(b => b.Year.ToString() == cbx_year.SelectedItem.ToString()).Distinct();
 
             if (cbx_author.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Year.ToString() == cbx_year.SelectedItem.ToString())
                         .Where(b => b.Author == cbx_author.SelectedItem.ToString())
                         .Distinct();
@@ -386,7 +362,7 @@ namespace FCSchoolLibrary
 
             if (cbx_name.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Year.ToString() == cbx_year.SelectedItem.ToString())
                         .Where(b => b.Name == cbx_name.SelectedItem.ToString())
                         .Distinct();
@@ -394,7 +370,7 @@ namespace FCSchoolLibrary
 
             if (cbx_inventoryNumber.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Year.ToString() == cbx_year.SelectedItem.ToString())
                         .Where(b => b.Count.ToString() == cbx_inventoryNumber.SelectedItem.ToString())
                         .Distinct();
@@ -402,7 +378,7 @@ namespace FCSchoolLibrary
 
             if (cbx_subject.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Year.ToString() == cbx_year.SelectedItem.ToString())
                         .Where(b => b.Subject == cbx_subject.SelectedItem.ToString())
                         .Distinct();
@@ -410,24 +386,24 @@ namespace FCSchoolLibrary
 
             if (cbx_genre.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Year.ToString() == cbx_year.SelectedItem.ToString())
                        .Where(b => b.Genre == cbx_genre.SelectedItem.ToString())
                         .Distinct();
             }
 
 
-            dgv_books.DataSource = bookes.ToList();
+            dgv_books.DataSource = books.ToList();
 
         }
 
         private void cbx_count_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bookes = fcSchoolLibrary.Books.Where(b => b.InventoryNumber.ToString() == cbx_inventoryNumber.SelectedItem.ToString()).Distinct();
+            books = fcSchoolLibrary.Books.Where(b => b.InventoryNumber.ToString() == cbx_inventoryNumber.SelectedItem.ToString()).Distinct();
 
             if (cbx_author.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.InventoryNumber.ToString() == cbx_inventoryNumber.SelectedItem.ToString())
                         .Where(b => b.Author == cbx_author.SelectedItem.ToString())
                         .Distinct();
@@ -435,7 +411,7 @@ namespace FCSchoolLibrary
 
             if (cbx_name.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.InventoryNumber.ToString() == cbx_inventoryNumber.SelectedItem.ToString())
                         .Where(b => b.Name == cbx_name.SelectedItem.ToString())
                         .Distinct();
@@ -443,7 +419,7 @@ namespace FCSchoolLibrary
 
             if (cbx_year.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.InventoryNumber.ToString() == cbx_inventoryNumber.SelectedItem.ToString())
                         .Where(b => b.Count.ToString() == cbx_inventoryNumber.SelectedItem.ToString())
                         .Distinct();
@@ -451,7 +427,7 @@ namespace FCSchoolLibrary
 
             if (cbx_subject.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.InventoryNumber.ToString() == cbx_inventoryNumber.SelectedItem.ToString())
                         .Where(b => b.Subject == cbx_subject.SelectedItem.ToString())
                         .Distinct();
@@ -459,23 +435,23 @@ namespace FCSchoolLibrary
 
             if (cbx_genre.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.InventoryNumber.ToString() == cbx_inventoryNumber.SelectedItem.ToString())
                        .Where(b => b.Genre == cbx_genre.SelectedItem.ToString())
                         .Distinct();
             }
 
 
-            dgv_books.DataSource = bookes.ToList();
+            dgv_books.DataSource = books.ToList();
         }
 
         private void cbx_subject_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bookes = fcSchoolLibrary.Books.Where(b => b.Subject == cbx_subject.SelectedItem.ToString()).Distinct();
+            books = fcSchoolLibrary.Books.Where(b => b.Subject == cbx_subject.SelectedItem.ToString()).Distinct();
 
             if (cbx_author.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Subject == cbx_subject.SelectedItem.ToString())
                         .Where(b => b.Author == cbx_author.SelectedItem.ToString())
                         .Distinct();
@@ -483,7 +459,7 @@ namespace FCSchoolLibrary
 
             if (cbx_name.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Subject == cbx_subject.SelectedItem.ToString())
                         .Where(b => b.Name == cbx_name.SelectedItem.ToString())
                         .Distinct();
@@ -491,7 +467,7 @@ namespace FCSchoolLibrary
 
             if (cbx_year.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Subject == cbx_subject.SelectedItem.ToString())
                         .Where(b => b.Year.ToString() == cbx_year.SelectedItem.ToString())
                         .Distinct();
@@ -499,7 +475,7 @@ namespace FCSchoolLibrary
 
             if (cbx_inventoryNumber.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Subject == cbx_subject.SelectedItem.ToString())
                         .Where(b => b.Count.ToString() == cbx_inventoryNumber.SelectedItem.ToString())
                         .Distinct();
@@ -507,23 +483,23 @@ namespace FCSchoolLibrary
 
             if (cbx_genre.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Subject == cbx_genre.SelectedItem.ToString())
                        .Where(b => b.Genre == cbx_genre.SelectedItem.ToString())
                         .Distinct();
             }
 
 
-            dgv_books.DataSource = bookes.ToList();
+            dgv_books.DataSource = books.ToList();
         }
 
         private void cbx_genre_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bookes = fcSchoolLibrary.Books.Where(b => b.Genre == cbx_genre.SelectedItem.ToString()).Distinct();
+            books = fcSchoolLibrary.Books.Where(b => b.Genre == cbx_genre.SelectedItem.ToString()).Distinct();
 
             if (cbx_author.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Genre == cbx_genre.SelectedItem.ToString())
                         .Where(b => b.Author == cbx_author.SelectedItem.ToString())
                         .Distinct();
@@ -531,7 +507,7 @@ namespace FCSchoolLibrary
 
             if (cbx_name.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Genre == cbx_genre.SelectedItem.ToString())
                         .Where(b => b.Name == cbx_name.SelectedItem.ToString())
                         .Distinct();
@@ -539,7 +515,7 @@ namespace FCSchoolLibrary
 
             if (cbx_year.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Genre == cbx_genre.SelectedItem.ToString())
                         .Where(b => b.Year.ToString() == cbx_year.SelectedItem.ToString())
                         .Distinct();
@@ -547,7 +523,7 @@ namespace FCSchoolLibrary
 
             if (cbx_inventoryNumber.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Genre == cbx_genre.SelectedItem.ToString())
                         .Where(b => b.Count.ToString() == cbx_inventoryNumber.SelectedItem.ToString())
                         .Distinct();
@@ -555,14 +531,14 @@ namespace FCSchoolLibrary
 
             if (cbx_subject.SelectedIndex != -1)
             {
-                bookes =
+                books =
                     fcSchoolLibrary.Books.Where(b => b.Genre.ToString() == cbx_genre.SelectedItem.ToString())
                        .Where(b => b.Subject == cbx_subject.SelectedItem.ToString())
                         .Distinct();
             }
 
 
-            dgv_books.DataSource = bookes.ToList();
+            dgv_books.DataSource = books.ToList();
         }
 
         private void chbx_search_CheckedChanged(object sender, EventArgs e)
@@ -611,12 +587,12 @@ namespace FCSchoolLibrary
         private void удалитьКнигуToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var id = Convert.ToInt32(statusIdBook.Text);
-            new BLL().DeleteBook(id, dgv_books);
+            new Bll().DeleteBook(id, dgv_books);
         }
 
         private void экспортВExcelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new BLL().ExportToExcel(dgv_books);
+            new Bll().ExportToExcel(dgv_books);
         }
 
         private void импортВExcelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -983,17 +959,26 @@ namespace FCSchoolLibrary
 
         private void panel_ColorRed_Click(object sender, EventArgs e)
         {
-            dgv_books.CurrentRow.DefaultCellStyle.BackColor = Color.Red;
+            if (dgv_books.CurrentRow != null)
+            {
+                dgv_books.CurrentRow.DefaultCellStyle.BackColor = Color.Red;
+            }
         }
 
         private void panel_ColorWhite_Click_1(object sender, EventArgs e)
         {
-            dgv_books.CurrentRow.DefaultCellStyle.BackColor = Color.White;
+            if (dgv_books.CurrentRow != null)
+            {
+                dgv_books.CurrentRow.DefaultCellStyle.BackColor = Color.White;
+            }
         }
 
         private void panel_ColorBlue_Click(object sender, EventArgs e)
         {
-            dgv_books.CurrentRow.DefaultCellStyle.BackColor = Color.Blue;
+            if (dgv_books.CurrentRow != null)
+            {
+                dgv_books.CurrentRow.DefaultCellStyle.BackColor = Color.Blue;
+            }
         }
 
         private void dgv_books_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

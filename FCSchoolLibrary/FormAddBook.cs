@@ -6,7 +6,7 @@ namespace FCSchoolLibrary
 {
     public partial class FormAddBook : Form
     {
-        BLL bll = new BLL();
+        Bll bll = new Bll();
 
         public FormAddBook()
         {

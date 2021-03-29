@@ -7,7 +7,7 @@ namespace FCSchoolLibrary
     {
         FCSchoolLibrary fcSchoolLibrary = new FCSchoolLibrary();
 
-        BLL bll = new BLL();
+        Bll bll = new Bll();
 
         public int Id { get; }
 

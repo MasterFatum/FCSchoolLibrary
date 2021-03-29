@@ -24,7 +24,7 @@ namespace FCSchoolLibrary
         {
             try
             {
-                lb_series.DataSource = new BLL().GetBookSeries();
+                lb_series.DataSource = new Bll().GetBookSeries();
             }
             catch (Exception ex)
             {
@@ -58,7 +58,7 @@ namespace FCSchoolLibrary
                 txbx_newSeriesName.Text = String.Empty;
                 MessageBox.Show(@"Серия успешно отредактирована!");
 
-                lb_series.DataSource = new BLL().GetBookSeries();
+                lb_series.DataSource = new Bll().GetBookSeries();
             }
             catch (Exception ex)
             {

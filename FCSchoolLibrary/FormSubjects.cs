@@ -19,7 +19,7 @@ namespace FCSchoolLibrary
         {
             try
             {
-                lb_subject.DataSource = new BLL().GetBookSubject();
+                lb_subject.DataSource = new Bll().GetBookSubject();
             }
             catch (Exception ex)
             {
@@ -58,7 +58,7 @@ namespace FCSchoolLibrary
                 txbx_newSubjectName.Text = String.Empty;
                 MessageBox.Show(@"Тема успешно отредактирована!");
 
-                lb_subject.DataSource = new BLL().GetBookSubject();
+                lb_subject.DataSource = new Bll().GetBookSubject();
             }
             catch (Exception ex)
             {

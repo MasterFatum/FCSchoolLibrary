@@ -28,7 +28,7 @@ namespace FCSchoolLibrary
                     openFile.ShowDialog();
                     string filename = openFile.FileName;
 
-                new BLL().AddBookToDataGridViewFromLoadDb(dgv_bookFromExcel, filename);
+                new Bll().AddBookToDataGridViewFromLoadDb(dgv_bookFromExcel, filename);
             }   
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace FCSchoolLibrary
 
         private void btn_uploadToDB_Click(object sender, EventArgs e)
         {
-            Task addBookInDatabase = new Task(()=> new BLL().LoadBooksToDb(dgv_bookFromExcel));
+            Task addBookInDatabase = new Task(()=> new Bll().LoadBooksToDb(dgv_bookFromExcel));
 
             try
             {

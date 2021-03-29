@@ -24,7 +24,7 @@ namespace FCSchoolLibrary
         {
             try
             {
-                lb_authors.DataSource = new BLL().GetBookAuthor();
+                lb_authors.DataSource = new Bll().GetBookAuthor();
             }
             catch (Exception ex)
             {
@@ -59,7 +59,7 @@ namespace FCSchoolLibrary
                     txbx_newAuthorName.Text = String.Empty;
                     MessageBox.Show(@"Автор успешно отредактирован!");
 
-                lb_authors.DataSource = new BLL().GetBookAuthor();
+                lb_authors.DataSource = new Bll().GetBookAuthor();
             }
                 catch (Exception ex)
                 {

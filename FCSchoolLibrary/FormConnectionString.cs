@@ -17,7 +17,7 @@ namespace FCSchoolLibrary
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            new BLL().SaveConnectionString(txbx_connectionString.Text.Trim());
+            new Bll().SaveConnectionString(txbx_connectionString.Text.Trim());
         }
 
         private void FormConnectionString_Load(object sender, EventArgs e)

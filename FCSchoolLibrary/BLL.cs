@@ -11,12 +11,31 @@ using System.Windows.Forms;
 
 namespace FCSchoolLibrary
 {
-    public class BLL
+    public class Bll
     {
         FCSchoolLibrary fcSchoolLibrary = new FCSchoolLibrary();
 
         SaveFileDialog saveFile;
-        
+
+        public void UpdateDataGridView(DataGridView dgv, ToolStripStatusLabel countBooksInDb)
+        {
+            try
+            {
+                fcSchoolLibrary.Dispose();
+
+                fcSchoolLibrary = new FCSchoolLibrary();
+
+                dgv.DataSource = fcSchoolLibrary.Books.OrderBy(i => i.InventoryNumber).ToList();
+
+                countBooksInDb.Text = dgv.RowCount.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                new FormException(ex.Message).ShowDialog();
+            }
+        }
+
         public List<String> GetBookName()
         {
             List<String> books = new List<String>();
@@ -82,7 +101,7 @@ namespace FCSchoolLibrary
         }
         public List<String> GetBookInventoryNumber()
         {
-            List<String> allBookcInventoryNumbers = new List<String>();
+            List<String> allBooksInventoryNumbers = new List<String>();
 
             try
             {
@@ -90,7 +109,7 @@ namespace FCSchoolLibrary
 
                 foreach (var number in inventoryNumbers)
                 {
-                    allBookcInventoryNumbers.Add(number.ToString());
+                    allBooksInventoryNumbers.Add(number.ToString());
                 }
             }
             catch (Exception ex)
@@ -99,7 +118,7 @@ namespace FCSchoolLibrary
                 MessageBox.Show(ex.Message);
             }
 
-            return allBookcInventoryNumbers;
+            return allBooksInventoryNumbers;
         }
         public List<String> GetBookSubject()
         {
@@ -526,7 +545,6 @@ namespace FCSchoolLibrary
         {
             try
             {
-                dgv.Columns[0].HeaderCell.Value = "ID книги";
                 dgv.Columns[0].Visible = false;
                 dgv.Columns[1].HeaderCell.Value = "Инвентарный номер";
                 dgv.Columns[2].HeaderCell.Value = "Автор";
@@ -553,24 +571,31 @@ namespace FCSchoolLibrary
 
         public void SearchBooksInDataGridView(TextBox textBoxSearch, DataGridView dgv)
         {
-            for (int i = 0; i < dgv.RowCount; i++)
+            try
             {
-                dgv.Rows[i].Selected = false;
-
-                for (int j = 0; j < dgv.ColumnCount; j++)
+                for (int i = 0; i < dgv.RowCount; i++)
                 {
-                    if (dgv.Rows[i].Cells[j].Value != null)
+                    dgv.Rows[i].Selected = false;
+
+                    for (int j = 0; j < dgv.ColumnCount; j++)
                     {
-                        if (dgv.Rows[i].Cells[j].Value.ToString().Contains(textBoxSearch.Text))
+                        if (dgv.Rows[i].Cells[j].Value != null)
                         {
-                            dgv.Rows[i].Selected = true;
-                            break;
+                            if (dgv.Rows[i].Cells[j].Value.ToString().Contains(textBoxSearch.Text))
+                            {
+                                dgv.Rows[i].Selected = true;
+                                break;
+                            }
                         }
                     }
                 }
+
+                MessageBox.Show(String.Format($"Найдено записей: {dgv.SelectedRows.Count}"));
             }
-            
-            MessageBox.Show(String.Format("Найдено записей: {0}", dgv.SelectedRows.Count));
+            catch (Exception ex)
+            {
+                new FormException(ex.Message).ShowDialog();
+            }
         }
 
         public void LoadBooksToDb(DataGridView dgv)
@@ -647,7 +672,7 @@ namespace FCSchoolLibrary
 
                     if (resultBackup == DialogResult.Yes)
                     {
-                        new BLL().ExportToExcel(dgv);
+                        new Bll().ExportToExcel(dgv);
                     }
 
                     if (fcSchoolLibrary.Books.Count() != 0)
