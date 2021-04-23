@@ -25,7 +25,8 @@ namespace FCSchoolLibrary
 
                 fcSchoolLibrary = new FCSchoolLibrary();
 
-                dgv.DataSource = fcSchoolLibrary.Books.OrderBy(i => i.InventoryNumber).ToList();
+                dgv.DataSource = fcSchoolLibrary.Books.OrderBy(i => i.InventoryNumber).Select(b => new { Id = b.Id, InventoryNumber = b.InventoryNumber, 
+                    Author = b.Author, Name = b.Name, Department = b.Department, Chipher = b.Cipher }).ToList();
 
                 countBooksInDb.Text = dgv.RowCount.ToString();
 
@@ -549,19 +550,8 @@ namespace FCSchoolLibrary
                 dgv.Columns[1].HeaderCell.Value = "Инвентарный номер";
                 dgv.Columns[2].HeaderCell.Value = "Автор";
                 dgv.Columns[3].HeaderCell.Value = "Название";
-                dgv.Columns[4].HeaderCell.Value = "Год";
-                dgv.Columns[5].HeaderCell.Value = "Место издания";
-                dgv.Columns[6].HeaderCell.Value = "Издательство";
-                dgv.Columns[7].HeaderCell.Value = "Серия";
-                dgv.Columns[8].HeaderCell.Value = "Количество";
-                dgv.Columns[9].HeaderCell.Value = "Цена";
-                dgv.Columns[10].HeaderCell.Value = "Отдел";
-                dgv.Columns[11].HeaderCell.Value = "Шифр";
-                dgv.Columns[12].HeaderCell.Value = "Страниц";
-                dgv.Columns[13].HeaderCell.Value = "Тема";
-                dgv.Columns[14].HeaderCell.Value = "Жанр";
-                dgv.Columns[15].HeaderCell.Value = "ISBN";
-                dgv.Columns[16].HeaderCell.Value = "Возраст";
+                dgv.Columns[4].HeaderCell.Value = "Издательство";
+                dgv.Columns[5].HeaderCell.Value = "Серия";
             }
             catch (Exception ex)
             {
@@ -589,7 +579,6 @@ namespace FCSchoolLibrary
                         }
                     }
                 }
-
                 MessageBox.Show(String.Format($"Найдено записей: {dgv.SelectedRows.Count}"));
             }
             catch (Exception ex)
@@ -623,7 +612,7 @@ namespace FCSchoolLibrary
                                 InventoryNumber = Convert.ToInt32(booksList[0]),
                                 Author = booksList[1].ToString(),
                                 Name = booksList[2].ToString(),
-                                Year = (Convert.ToInt32(booksList[3])),
+                                Year = Convert.ToInt32(booksList[3]),
                                 PublishPlace = booksList[4].ToString(),
                                 PublishName = booksList[5].ToString(),
                                 Serial = booksList[6].ToString(),
@@ -736,7 +725,6 @@ namespace FCSchoolLibrary
                 new FormException(ex.Message).ShowDialog();
             }
         }
-
         private void releaseObject(object obj)
         {
             try

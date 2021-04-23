@@ -125,7 +125,6 @@
             this.удалитьБазуДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.информацияToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip_time = new System.Windows.Forms.ToolStripTextBox();
             this.блокировкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -189,7 +188,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Century Schoolbook", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1024, 518);
+            this.groupBox1.Size = new System.Drawing.Size(1024, 520);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Все книги";
@@ -217,7 +216,7 @@
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Schoolbook", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.ForestGreen;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGreen;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv_books.DefaultCellStyle = dataGridViewCellStyle2;
@@ -235,7 +234,7 @@
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
             this.dgv_books.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_books.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_books.Size = new System.Drawing.Size(1012, 487);
+            this.dgv_books.Size = new System.Drawing.Size(1012, 491);
             this.dgv_books.TabIndex = 19;
             this.dgv_books.VirtualMode = true;
             this.dgv_books.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_books_CellClick);
@@ -1181,12 +1180,11 @@
             this.правкаToolStripMenuItem1,
             this.дополнительноToolStripMenuItem1,
             this.информацияToolStripMenuItem1,
-            this.toolStrip_time,
             this.блокировкаToolStripMenuItem,
             this.toolStripMenuItem3});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1267, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(1267, 25);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1197,14 +1195,14 @@
             this.экспортВExcelToolStripMenuItem1,
             this.выходToolStripMenuItem1});
             this.файлToolStripMenuItem1.Name = "файлToolStripMenuItem1";
-            this.файлToolStripMenuItem1.Size = new System.Drawing.Size(52, 23);
+            this.файлToolStripMenuItem1.Size = new System.Drawing.Size(52, 21);
             this.файлToolStripMenuItem1.Text = "Файл";
             // 
             // импортИзExcelToolStripMenuItem
             // 
             this.импортИзExcelToolStripMenuItem.Image = global::FCSchoolLibrary.Properties.Resources.Microsoft_Excel_32px;
             this.импортИзExcelToolStripMenuItem.Name = "импортИзExcelToolStripMenuItem";
-            this.импортИзExcelToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.импортИзExcelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.импортИзExcelToolStripMenuItem.Text = "Импорт из Excel";
             this.импортИзExcelToolStripMenuItem.Click += new System.EventHandler(this.btn_excelImport_Click);
             // 
@@ -1212,7 +1210,7 @@
             // 
             this.экспортВExcelToolStripMenuItem1.Image = global::FCSchoolLibrary.Properties.Resources.Microsoft_Excel_32px;
             this.экспортВExcelToolStripMenuItem1.Name = "экспортВExcelToolStripMenuItem1";
-            this.экспортВExcelToolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
+            this.экспортВExcelToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.экспортВExcelToolStripMenuItem1.Text = "Экспорт в Excel";
             this.экспортВExcelToolStripMenuItem1.Click += new System.EventHandler(this.btn_excelExport_Click);
             // 
@@ -1220,7 +1218,7 @@
             // 
             this.выходToolStripMenuItem1.Image = global::FCSchoolLibrary.Properties.Resources.Shutdown_32px;
             this.выходToolStripMenuItem1.Name = "выходToolStripMenuItem1";
-            this.выходToolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
+            this.выходToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.выходToolStripMenuItem1.Text = "Выход";
             this.выходToolStripMenuItem1.Click += new System.EventHandler(this.выходToolStripMenuItem1_Click);
             // 
@@ -1231,7 +1229,7 @@
             this.редактироватьКнигуToolStripMenuItem2,
             this.удалитьКнигуToolStripMenuItem2});
             this.правкаToolStripMenuItem1.Name = "правкаToolStripMenuItem1";
-            this.правкаToolStripMenuItem1.Size = new System.Drawing.Size(66, 23);
+            this.правкаToolStripMenuItem1.Size = new System.Drawing.Size(66, 21);
             this.правкаToolStripMenuItem1.Text = "Правка";
             // 
             // добавитьКнигуToolStripMenuItem1
@@ -1265,7 +1263,7 @@
             this.настройкиЭлектроннойПочтыToolStripMenuItem,
             this.удалитьБазуДанныхToolStripMenuItem});
             this.дополнительноToolStripMenuItem1.Name = "дополнительноToolStripMenuItem1";
-            this.дополнительноToolStripMenuItem1.Size = new System.Drawing.Size(114, 23);
+            this.дополнительноToolStripMenuItem1.Size = new System.Drawing.Size(114, 21);
             this.дополнительноToolStripMenuItem1.Text = "Дополнительно";
             // 
             // строкаПодключенияToolStripMenuItem
@@ -1297,7 +1295,7 @@
             this.информацияToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.оПрограммеToolStripMenuItem1});
             this.информацияToolStripMenuItem1.Name = "информацияToolStripMenuItem1";
-            this.информацияToolStripMenuItem1.Size = new System.Drawing.Size(99, 23);
+            this.информацияToolStripMenuItem1.Size = new System.Drawing.Size(99, 21);
             this.информацияToolStripMenuItem1.Text = "Информация";
             // 
             // оПрограммеToolStripMenuItem1
@@ -1308,27 +1306,18 @@
             this.оПрограммеToolStripMenuItem1.Text = "О программе";
             this.оПрограммеToolStripMenuItem1.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem1_Click);
             // 
-            // toolStrip_time
-            // 
-            this.toolStrip_time.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStrip_time.Enabled = false;
-            this.toolStrip_time.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStrip_time.Name = "toolStrip_time";
-            this.toolStrip_time.Size = new System.Drawing.Size(100, 23);
-            this.toolStrip_time.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // блокировкаToolStripMenuItem
             // 
             this.блокировкаToolStripMenuItem.Image = global::FCSchoolLibrary.Properties.Resources.Lock_32px;
             this.блокировкаToolStripMenuItem.Name = "блокировкаToolStripMenuItem";
-            this.блокировкаToolStripMenuItem.Size = new System.Drawing.Size(108, 23);
+            this.блокировкаToolStripMenuItem.Size = new System.Drawing.Size(108, 21);
             this.блокировкаToolStripMenuItem.Text = "Блокировка";
             this.блокировкаToolStripMenuItem.Click += new System.EventHandler(this.блокировкаToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(12, 23);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(12, 21);
             // 
             // файлToolStripMenuItem
             // 
@@ -1523,7 +1512,7 @@
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.Color.White;
             this.label21.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label21.Location = new System.Drawing.Point(975, 6);
+            this.label21.Location = new System.Drawing.Point(1065, 5);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(98, 16);
             this.label21.TabIndex = 22;
@@ -1534,7 +1523,7 @@
             this.panel_ColorRed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_ColorRed.BackColor = System.Drawing.Color.Red;
             this.panel_ColorRed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_ColorRed.Location = new System.Drawing.Point(1137, 2);
+            this.panel_ColorRed.Location = new System.Drawing.Point(1227, 1);
             this.panel_ColorRed.Name = "panel_ColorRed";
             this.panel_ColorRed.Size = new System.Drawing.Size(24, 24);
             this.panel_ColorRed.TabIndex = 23;
@@ -1545,7 +1534,7 @@
             this.panel_ColorBlue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_ColorBlue.BackColor = System.Drawing.Color.Blue;
             this.panel_ColorBlue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_ColorBlue.Location = new System.Drawing.Point(1107, 2);
+            this.panel_ColorBlue.Location = new System.Drawing.Point(1197, 1);
             this.panel_ColorBlue.Name = "panel_ColorBlue";
             this.panel_ColorBlue.Size = new System.Drawing.Size(24, 24);
             this.panel_ColorBlue.TabIndex = 24;
@@ -1556,7 +1545,7 @@
             this.panel_ColorWhite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_ColorWhite.BackColor = System.Drawing.Color.White;
             this.panel_ColorWhite.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_ColorWhite.Location = new System.Drawing.Point(1077, 2);
+            this.panel_ColorWhite.Location = new System.Drawing.Point(1167, 1);
             this.panel_ColorWhite.Name = "panel_ColorWhite";
             this.panel_ColorWhite.Size = new System.Drawing.Size(24, 24);
             this.panel_ColorWhite.TabIndex = 25;
@@ -1566,7 +1555,7 @@
             // 
             this.btn_clearComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_clearComboBox.Enabled = false;
-            this.btn_clearComboBox.Font = new System.Drawing.Font("Century Schoolbook", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_clearComboBox.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_clearComboBox.Image = global::FCSchoolLibrary.Properties.Resources.Clear_Filters_32px;
             this.btn_clearComboBox.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_clearComboBox.Location = new System.Drawing.Point(1062, 594);
@@ -1582,7 +1571,7 @@
             // 
             this.btn_searchBooks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_searchBooks.Enabled = false;
-            this.btn_searchBooks.Font = new System.Drawing.Font("Century Schoolbook", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_searchBooks.Font = new System.Drawing.Font("Century Schoolbook", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_searchBooks.Image = global::FCSchoolLibrary.Properties.Resources.Search_32px;
             this.btn_searchBooks.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_searchBooks.Location = new System.Drawing.Point(754, 594);
@@ -1597,7 +1586,7 @@
             // btn_excelExport
             // 
             this.btn_excelExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_excelExport.Font = new System.Drawing.Font("Century Schoolbook", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_excelExport.Font = new System.Drawing.Font("Century Schoolbook", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_excelExport.Image = global::FCSchoolLibrary.Properties.Resources.Microsoft_Excel_32px;
             this.btn_excelExport.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_excelExport.Location = new System.Drawing.Point(64, 595);
@@ -1612,7 +1601,7 @@
             // btn_updateDb
             // 
             this.btn_updateDb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_updateDb.Font = new System.Drawing.Font("Century Schoolbook", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_updateDb.Font = new System.Drawing.Font("Century Schoolbook", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_updateDb.Image = global::FCSchoolLibrary.Properties.Resources.Available_Updates_32px;
             this.btn_updateDb.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_updateDb.Location = new System.Drawing.Point(879, 594);
@@ -1627,7 +1616,7 @@
             // btn_excelImport
             // 
             this.btn_excelImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_excelImport.Font = new System.Drawing.Font("Century Schoolbook", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_excelImport.Font = new System.Drawing.Font("Century Schoolbook", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_excelImport.Image = global::FCSchoolLibrary.Properties.Resources.Microsoft_Excel_32px;
             this.btn_excelImport.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_excelImport.Location = new System.Drawing.Point(249, 595);
@@ -1692,7 +1681,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Библиотека НЧОУ СОШ ФК Краснодар (Версия преподаватель: 2.13.0418)";
+            this.Text = "Библиотека НЧОУ СОШ ФК Краснодар (Версия преподаватель: 3.0.0421)";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.groupBox1.ResumeLayout(false);
@@ -1840,7 +1829,6 @@
         private System.Windows.Forms.ToolStripMenuItem редактироватьКнигуToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem удалитьКнигуToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem блокировкаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripTextBox toolStrip_time;
         private System.Windows.Forms.ToolStripMenuItem удалитьБазуДанныхToolStripMenuItem;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;

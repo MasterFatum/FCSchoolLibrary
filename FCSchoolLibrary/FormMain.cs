@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,14 +12,6 @@ namespace FCSchoolLibrary
         FCSchoolLibrary fcSchoolLibrary = new FCSchoolLibrary();
 
         Bll bll = new Bll();
-
-        private readonly Timer time;
-
-        public void Time(Object sender, EventArgs e)
-        {
-            toolStrip_time.Text = DateTime.Now.ToLongTimeString();
-        }
-
         public void ApplicationExit()
         {
             DialogResult result = MessageBox.Show(@"Выйти из программы?", @"Выход", MessageBoxButtons.YesNo,
@@ -34,16 +27,13 @@ namespace FCSchoolLibrary
         public FormMain()
         {
             InitializeComponent();
-            time = new Timer();
-            time.Interval = 1000;
-            time.Tick += Time;
-            time.Enabled = true;
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            time.Start();
             new FormAutorization().ShowDialog();
+            //dgv_books.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -52,7 +42,6 @@ namespace FCSchoolLibrary
             {
                 e.Cancel = true;
             }
-
         }
 
         public void GetStartApp()
@@ -86,7 +75,6 @@ namespace FCSchoolLibrary
 
         
 
-
         public void ResetAllComboBox()
         {
             try
@@ -112,7 +100,6 @@ namespace FCSchoolLibrary
             {
                 new FormException(ex.Message).ShowDialog();
             }
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -168,19 +155,11 @@ namespace FCSchoolLibrary
 
         private void dgv_books_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if ( dgv_books.CurrentRow == null)
-            {
-                return;
+            if (dgv_books.CurrentRow != null)
+            { 
+                int bookId = Convert.ToInt32(dgv_books[0, dgv_books.CurrentRow.Index].Value);
+                statusIdBook.Text = bookId.ToString();
             }
-
-            var books = dgv_books.CurrentRow.DataBoundItem as Book;
-
-            if (books == null)
-            {
-                return;
-            }
-
-            statusIdBook.Text = books.Id.ToString();
         }
 
         //РЕДАКТИРОВАТЬ КНИГУ

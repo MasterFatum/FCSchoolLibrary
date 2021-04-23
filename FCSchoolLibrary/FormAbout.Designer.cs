@@ -132,9 +132,9 @@
             this.label2.Font = new System.Drawing.Font("Century Schoolbook", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(6, 59);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 18);
+            this.label2.Size = new System.Drawing.Size(125, 18);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Версия: 3.26.0321";
+            this.label2.Text = "Версия: 3.0.0421";
             // 
             // label1
             // 
